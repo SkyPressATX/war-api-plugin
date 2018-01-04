@@ -13,5 +13,10 @@
             "email": "bmo@wpengine.com"
         }
     ],
-    "minimum-stability": "alpha"
+    "minimum-stability": "alpha",
+    "autoload": {
+        "psr-4": {
+            "WAR\\": "src/"
+        }
+    }
 }
