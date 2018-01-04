@@ -1,0 +1,17 @@
+{
+    "name": "skypress/war-api-plugin",
+    "description": "Library to help extend the WordPress Rest API",
+    "type": "library",
+    "require": {
+        "php": ">=5.6",
+        "firebase/php-jwt": "^5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BMO",
+            "email": "bmo@wpengine.com"
+        }
+    ],
+    "minimum-stability": "alpha"
+}
