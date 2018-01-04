@@ -2,7 +2,7 @@
 
 namespace WAR\Data;
 
-use WAR\Helpers\Global AS Global_Helpers;
+use WAR\Helpers\GlobalHelpers AS Global_Helpers;
 
 class QuerySearch {
 

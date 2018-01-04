@@ -2,10 +2,10 @@
 
 namespace WAR\Data;
 
-use WAR\Data\QuerySearch as Query_Search;
-use WAR\Data\QueryBuilder as Query_Builder;
-use WAR\Data\WarDB as War_DB;
-use WAR\Helpers\Global as Global_Helpers;
+use WAR\Data\QuerySearch		as Query_Search;
+use WAR\Data\QueryBuilder		as Query_Builder;
+use WAR\Data\WarDB				as War_DB;
+use WAR\Helpers\GlobalHelpers	as Global_Helpers;
 
 class QueryAssoc {
 

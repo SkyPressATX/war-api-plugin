@@ -2,12 +2,12 @@
 
 namespace WAR\Data;
 
-use WAR\Data\QuerySearch	as Query_Search;
-use WAR\Data\QuerySelect	as Query_Select;
-use WAR\Helpers\Global		as Global_Helpers;
-use WAR\Data\QueryAssoc		as Query_Assoc;
-use WAR\Data\QueryBuilder	as Query_Builder;
-use WAR\Data\WarDB			as War_DB;
+use WAR\Data\QuerySearch		as Query_Search;
+use WAR\Data\QuerySelect		as Query_Select;
+use WAR\Helpers\GlobalHelpers	as Global_Helpers;
+use WAR\Data\QueryAssoc			as Query_Assoc;
+use WAR\Data\QueryBuilder		as Query_Builder;
+use WAR\Data\WarDB				as War_DB;
 
 class DAO {
 

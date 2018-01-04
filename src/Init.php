@@ -1,11 +1,11 @@
 <?php
 namespace WAR;
 
-use WAR\Endpoint as War_Endpoint;
-use WAR\Model as War_Model;
-use WAR\Security\User as War_User;
-use WAR\AutoConfig as War_Auto_Config;
-use WAR\Helpers\Global as Global_Helpers;
+use WAR\Endpoint				as War_Endpoint;
+use WAR\Model					as War_Model;
+use WAR\Security\User			as War_User;
+use WAR\AutoConfig				as War_Auto_Config;
+use WAR\Helpers\GlobalHelpers	as Global_Helpers;
 
 /**
  * WAR Initialization Class.

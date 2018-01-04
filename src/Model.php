@@ -2,12 +2,12 @@
 
 namespace WAR;
 
-use WAR\Security\RoleCheck as Role_Check;
-use WAR\Endpoint as War_Endpoint;
-use WAR\Data\DAO as DAO;
-use WAR\Data\QuerySearch as Query_Search;
-use WAR\Helpers\Params as Param_Helper;
-use WAR\Helpers\Global as Global_Helpers;
+use WAR\Security\RoleCheck		as Role_Check;
+use WAR\Endpoint				as War_Endpoint;
+use WAR\Data\DAO				as DAO;
+use WAR\Data\QuerySearch		as Query_Search;
+use WAR\Helpers\Params			as Param_Helper;
+use WAR\Helpers\GlobalHelpers	as Global_Helpers;
 
 class Model {
 

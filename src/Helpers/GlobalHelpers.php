@@ -2,7 +2,7 @@
 
 namespace WAR\Helpers;
 
-class Global {
+class GlobalHelpers {
 
 	public function get_old_rest_api_prefix(){
 		$rewrite_rules = get_option( 'rewrite_rules' );

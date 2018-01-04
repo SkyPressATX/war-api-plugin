@@ -2,8 +2,8 @@
 
 namespace WAR\Data;
 
-use WAR\Data\QueryBuilder as Query_Builder;
-use WAR\Helpers\Global as Global_Helpers;
+use WAR\Data\QueryBuilder		as Query_Builder;
+use WAR\Helpers\GlobalHelpers	as Global_Helpers;
 
 /**
 * Example Query Map
