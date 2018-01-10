@@ -93,6 +93,9 @@ class Model {
 	public function read_records( $request ){
 		try {
 			$request = apply_filters( 'war_pre_data_' . $this->model->name, $request );
+
+			if( property_exists( $request->params, '_schema' ) ) return $this->prep_schema();
+
 			$db_info = ( property_exists( $this->model, 'db_info' ) ) ? $this->model->db_info : array();
 
 			$dao = new DAO( $db_info, $this->model, $request, $this->war_config );
@@ -113,6 +116,9 @@ class Model {
 	public function read_record( $request ){
 		try {
 			$request = apply_filters( 'war_pre_data_' . $this->model->name, $request );
+
+			if( property_exists( $request->params, '_schema' ) ) return $this->prep_schema();
+			
 			$db_info = ( property_exists( $this->model, 'db_info' ) ) ? $this->model->db_info : array();
 			$dao = new DAO( $db_info, $this->model, $request, $this->war_config );
 			$item = $dao->read_one();
@@ -205,5 +211,23 @@ class Model {
 			'delete' => $this->war_config->default_access
 		);
 		$this->access_levels = (object)array_merge( $defaults, $this->model->access );
+	}
+
+	private function prep_schema(){
+		// unset validate_callback and sanitize_callback from each param
+		array_walk( $this->model->params, function( &$param, $key ){
+			unset( $param[ 'validate_callback' ] );
+			unset( $param[ 'sanitize_callback' ] );
+			$param[ 'name' ] = $key;
+		});
+		if( property_exists( $this->model, 'db_info' ) ) unset( $this->model->db_info );
+		if( isset( $this->model->pre_data ) ) unset( $this->model->pre_data );
+		if( isset( $this->model->pre_return ) ) unset( $this->model->pre_return );
+		unset( $this->model->callback );
+
+		$this->model->url_id_param = ( property_exists( $this->model, 'url_id_param' ) ) ? $this->model->url_id_param[0] : $this->war_config->url_id_param[0];
+
+		return $this->model;
+
 	}
 } // END War_Model Class
