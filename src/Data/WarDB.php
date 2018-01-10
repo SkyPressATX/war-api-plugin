@@ -65,8 +65,8 @@ class WarDB {
 
 	//Initialize the War_DB Class
 	public static function init( $db_info = false ){
-		if( self::$instance === null ) self::$instance = new War_DB( $db_info );
-		if( $db_info && $db_info[ 'db_host' ] !== self::$db_host ) self::$instance = new War_DB( $db_info );
+		if( self::$instance === null ) self::$instance = new WarDB( $db_info );
+		if( $db_info && $db_info[ 'db_host' ] !== self::$db_host ) self::$instance = new WarDB( $db_info );
 		return self::$instance;
 	}
 
