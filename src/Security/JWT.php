@@ -2,7 +2,7 @@
 
 namespace WAR\Security;
 
-use \Firebase\JWT\JWT;
+use \Firebase\JWT\JWT as F_JWT;
 
 class JWT {
 
@@ -31,7 +31,7 @@ class JWT {
 
 		if( $this->jwt_expire ) $token[ 'exp' ] = $this->jwt_expire;
 
-        return JWT::encode( $token, AUTH_KEY );
+        return F_JWT::encode( $token, AUTH_KEY );
     }
 
 	public function jwt_key_decode( $auth_header = false ){
@@ -39,7 +39,7 @@ class JWT {
         list($token) = sscanf($auth_header, 'Bearer %s');
         if(!$token) return false;
 
-        $decoded_token = JWT::decode($token, AUTH_KEY, array('HS256'));
+        $decoded_token = F_JWT::decode($token, AUTH_KEY, array('HS256'));
 		try {
         	return $this->jwt_validate((object)$decoded_token);
 		}catch( \Exception $e ){
