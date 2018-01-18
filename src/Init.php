@@ -51,8 +51,10 @@ class Init {
 
 	private function add_filters(){
 		$old_prefix = $this->help->get_old_rest_api_prefix();
-		if( $this->war_config->api_prefix !== $old_prefix ) add_action( 'init', [ $this->help, 'rewrite_flush' ] );
-		add_filter( 'rest_url_prefix', [ $this->auto_config, 'set_api_prefix' ], 99 );
+		if( false !== $this->war_config->api_prefix && $this->war_config->api_prefix !== $old_prefix ) {
+			add_action( 'init', [ $this->help, 'rewrite_flush' ] );
+			add_filter( 'rest_url_prefix', [ $this->auto_config, 'set_api_prefix' ], 99 );
+		}
 
 		add_filter( 'war_object', [ $this->auto_config, 'add_war_object' ], 1 );
 		add_filter( 'status_header', [ $this, 'handle_missing_requests' ] ); // Important for the AngularJS aspect of the WAR Framework
