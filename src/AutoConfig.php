@@ -49,9 +49,9 @@ class AutoConfig {
 	public function war_localize(){
 		wp_register_script('war_site_details', null);
 
-        $war_object = apply_filters( 'war_object', [] );
-        wp_localize_script('war_site_details','warObject',$war_object);
-        wp_enqueue_script('war_site_details');
+        	$war_object = apply_filters( 'war_object', [] );
+        	wp_localize_script('war_site_details','warObject',$war_object);
+        	wp_enqueue_script('war_site_details');
 	}
 
 	public function set_api_prefix( $prefix ){
