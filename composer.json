@@ -10,10 +10,9 @@
     "authors": [
         {
             "name": "BMO",
-            "email": "bmo@wpengine.com"
+            "email": "bmo@skypress.io"
         }
     ],
-    "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
             "WAR\\": "src/"
