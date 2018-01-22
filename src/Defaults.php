@@ -18,23 +18,24 @@ class Defaults {
 
 	public function set_config(){
 		return [
-            'api_name' => 'war',
-            'api_prefix' => 'wp-json',
-            'admin_toolbar' => false,
-            'user_roles' => [],
-            'version' => 1,
-            'permalink' => '/posts/%postname%/',
-			'default_access' => false,
-			'war_jwt_expire' => ( time() + ( DAY_IN_SECONDS * 30 ) ),
-			'isolate_user_data' => true,
-			'limit' => 10,
-			'sideLimit' => 10,
-			'filter_sideSearch_results' => false,
-			'max_limit' => 100,
-			'url_id_param' => [ 'id', '\d+' ],
-			'enable_cors' => false,
-			'default_model_params' => [ 'id', 'created_on', 'updated_on', 'user' ]
-        ];
+        		'api_name'			=> 'war',
+        		'api_prefix'			=> 'wp-json',
+        		'admin_toolbar'			=> false,
+        		'user_roles'			=> [],
+        		'version'			=> 1,
+        		'permalink'			=> '/posts/%postname%/',
+			'default_access'		=> false,
+			'war_jwt_expire'		=> ( time() + ( DAY_IN_SECONDS * 30 ) ),
+			'isolate_user_data'		=> true,
+			'limit'				=> 10,
+			'sideLimit'			=> 10,
+			'filter_sideSearch_results'	=> false,
+			'max_limit'			=> 100,
+			'url_id_param'			=> [ 'id', '\d+' ],
+			'enable_cors'			=> false,
+			'default_model_params'		=> [ 'id', 'created_on', 'updated_on', 'user' ],
+			'localize_war_object'		=> true
+        	];
 	}
 
 	public function set_models(){
@@ -44,11 +45,6 @@ class Defaults {
 	public function set_endpoints(){
 		$de = new DE;
 		return [
-			// 'jwt_token' => [
-			// 	'uri' => '/jwt-token',
-			// 	'access' => true,
-			// 	'callback' => [ $de, 'war_jwt_create' ]
-			// ],
 			'menu' => [
 				'uri' => '/menu',
 				'access' => false,
@@ -65,17 +61,6 @@ class Defaults {
 				'access' => 'manage_options',
 				'callback' => [ $de, 'war_save_site_options' ]
 			],
-			// 'theme_options' => [
-			// 	'uri' => '/theme-options',
-			// 	'access' => false,
-			// 	'method' => 'POST',
-			// 	'callback' => [ $de, 'war_theme_options' ]
-			// ],
-			// 'site_options' => [
-			// 	'uri' => '/site-options',
-			// 	'access' => false,
-			// 	'callback' => [ $de, 'war_site_options' ]
-			// ],
 			'login' => [
 				'uri' => '/login',
 				'access' => null,
@@ -91,21 +76,6 @@ class Defaults {
 				'access' => true,
 				'callback' => [ $de, 'war_logout' ]
 			],
-			// 'register' => [
-			// 	'uri' => '/register',
-			// 	'access' => null,
-			// 	'method' => 'POST',
-			// 	'params' => [
-			// 		'email' => [ 'type' => 'email', 'required' => true ],
-			// 		'password' => [ 'type' => 'string', 'required' => true ],
-			// 		'role' => [
-			// 			'type' => 'string',
-			// 			'options' => ( isset( $war_config[ 'user_roles' ] ) ) ? $war_config[ 'user_roles' ] : [],
-			// 			'default' => end( $war_config['user_roles'] )
-			// 		]
-			// 	],
-			// 	'callback' => [ $de, 'war_signup' ]
-			// ],
 			'get_home_page' => [
 				'uri' => '/home',
 				'access' => false,
