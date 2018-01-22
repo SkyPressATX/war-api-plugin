@@ -25,7 +25,7 @@ class Defaults {
 			'filter_sideSearch_results'	=> false,
 			'isolate_user_data'			=> true,
 			'limit'						=> 10,
-			'localize_war_object'		=> true
+			'localize_war_object'		=> true,
 			'max_limit'					=> 100,
 			'permalink'					=> '/posts/%postname%/',
 			'sideLimit'					=> 10,
