@@ -66,7 +66,9 @@ class Init {
 		add_action( 'init', [ $this, 'get_current_user' ] ); // Get an authenticated User
 		add_action( 'rest_api_init', [ $this, 'register_endpoints' ] );
 		add_action( 'rest_api_init', [ $this, 'register_models' ] );
-		add_action( 'wp_enqueue_scripts', [ $this->auto_config, 'war_localize' ] ); // Localize the warObject
+		if( true === $this->war_config->localize_war_object ) {
+			add_action( 'wp_enqueue_scripts', [ $this->auto_config, 'war_localize' ] ); // Localize the warObject
+		}
 		add_action( 'wp', [ $this->auto_config, 'manage_admin_toolbar' ] ); //Show or Hide the Admin Toolbar
 		add_action( 'send_headers', [ $this, 'enable_cors' ] );
 	}
