@@ -27,14 +27,14 @@ class UserAuth {
 
 	private function get_user_id_by_jwt(){
 		if( isset( $this->user_id ) ) return;
-		if( isset( $_SERVER[ 'HTTP_AUTHORIZATION' ] ) )
-			$this->user_id = $this->key_check( $_SERVER[ 'HTTP_AUTHORIZATION' ] );
+		$key_to_check( $this->get_header_value( 'Authorization' ) );
+		if( NULL !== $key_to_check ) $this->user_id = $this->key_check( $key_to_check );
 	}
 
 	private function get_user_id_by_nonce(){
 		if( isset( $this->user_id ) ) return;
-		if( isset( $_SERVER[ 'HTTP_X_WP_NONCE' ] ) )
-			$this->user_id = $this->nonce_check( $_SERVER[ 'HTTP_X_WP_NONCE' ] );
+		$key_to_check( $this->get_header_value( 'X-WP-Nonce' ) );
+		if( NULL !== $key_to_check ) $this->user_id = $this->nonce_check( $key_to_check );
 	}
 
 	private function key_check( $key ){
@@ -63,6 +63,28 @@ class UserAuth {
 		$this->auth_type = 'COOKIE';
 		$this->authed = true;
 		return get_current_user_id();
+	}
+
+	/**
+	 * Get value of a header
+	 *
+	 * @since 0.1.2-alpha
+	 *
+	 * @param string $header_key Header to get value for
+	 * @return string | NULL Value of header, unprocessed
+	 */
+	private function get_header_value( $header_key = NULL ) {
+		// Return NULL if no header key is provided
+		if( NULL === $header_key ) return $header_key;
+		// Use $_SERVER if getallheaders is not a function
+		if( ! function_exists( 'getallheaders' ) ) {
+			$header = 'HTTP_' . strtoupper( str_replace( '-', '_', $header_key ) );
+			return ( array_key_exists( $header, $_SERVER ) ) ? $_SERVER[ $header ] : NULL;
+		}
+
+		// Use getallheaders function
+		$headers = getallheaders();
+		return ( array_key_exists( $header_key, $headers ) ) ? $headers[ $header_key ] : NULL;
 	}
 
 	private function auth_used(){
