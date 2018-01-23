@@ -27,13 +27,13 @@ class UserAuth {
 
 	private function get_user_id_by_jwt(){
 		if( isset( $this->user_id ) ) return;
-		$key_to_check( $this->get_header_value( 'Authorization' ) );
+		$key_to_check = $this->get_header_value( 'Authorization' );
 		if( NULL !== $key_to_check ) $this->user_id = $this->key_check( $key_to_check );
 	}
 
 	private function get_user_id_by_nonce(){
 		if( isset( $this->user_id ) ) return;
-		$key_to_check( $this->get_header_value( 'X-WP-Nonce' ) );
+		$key_to_check = $this->get_header_value( 'X-WP-Nonce' );
 		if( NULL !== $key_to_check ) $this->user_id = $this->nonce_check( $key_to_check );
 	}
 
