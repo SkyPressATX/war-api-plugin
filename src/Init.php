@@ -56,7 +56,9 @@ class Init {
 			add_filter( 'rest_url_prefix', [ $this->auto_config, 'set_api_prefix' ], 99 );
 		}
 
-		add_filter( 'war_object', [ $this->auto_config, 'add_war_object' ], 1 );
+		if( true === $this->war_config->localize_war_object ) {
+			add_filter( 'war_object', [ $this->auto_config, 'add_war_object' ], 1 );
+		}
 		add_filter( 'status_header', [ $this, 'handle_missing_requests' ] ); // Important for the AngularJS aspect of the WAR Framework
 	}
 
