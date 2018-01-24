@@ -39,7 +39,7 @@ class GlobalHelpers {
     }
 
 	public function rewrite_flush(){
-		flush_rewrite_rules( false );
+		flush_rewrite_rules();
     }
 
 	public function quote_it( $x ){
