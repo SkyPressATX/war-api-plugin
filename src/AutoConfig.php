@@ -31,28 +31,26 @@ class AutoConfig {
 		$wu = new War_User;
 
 		$war_object = array(
-			'warPath' => get_template_directory_uri(),
-			'childPath' => get_stylesheet_directory_uri(),
+			// 'warPath' => get_template_directory_uri(),
+			// 'childPath' => get_stylesheet_directory_uri(),
 			'authHeader' => 'X-WP-Nonce',
 			'authKey' => $this->war_config->nonce,
-			'permalink' => preg_replace('/\%.+\%/',':slug', get_option( 'permalink_structure' ) ),
-			'category_base' => preg_replace('/\%.+\%/',':slug', get_option( 'category_base' ) ),
+			// 'permalink' => preg_replace('/\%.+\%/',':slug', get_option( 'permalink_structure' ) ),
+			// 'category_base' => preg_replace('/\%.+\%/',':slug', get_option( 'category_base' ) ),
 			'apiRoot' => rest_get_url_prefix(),
 			'apiNamespace' => $this->war_config->namespace,
 			'user' => $wu->get_war_user(),
-			'root' => esc_url_raw( rest_url() )
+			// 'root' => esc_url_raw( rest_url() )
 		);
 
 		return $war_object;
 	}
 
 	public function war_localize(){
-
 		wp_register_script('war_site_details', null);
     	$war_object = apply_filters( 'war_object', [] );
     	wp_localize_script('war_site_details','warObject',$war_object);
     	wp_enqueue_script('war_site_details');
-		
 	}
 
 	public function set_api_prefix( $prefix ){
